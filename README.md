@@ -57,12 +57,11 @@ Use the `MermaidConfiguration` widget to interactively modify the Mermaid diagra
 ```python
 import panel as pn
 
-from panel_mermaid import MermaidDiagram, MermaidConfiguration
+from panel_mermaid import MermaidDiagram
 
 pn.extension()
 
-configuration = MermaidConfiguration(look="handDrawn", theme="forest")
-diagram = MermaidDiagram(
+MermaidDiagram(
     object=(
         """
         graph LR
@@ -71,12 +70,10 @@ diagram = MermaidDiagram(
         """
     ),
     configuration={"look": "handDrawn", "theme": "forest"},
-)
-
-pn.FlexBox(configuration, diagram).servable()
+).servable()
 ```
 
-[Try on PY.CAFE](https://py.cafe/snippet/panel/v1#c=H4sIAI_jC2cAA41STY_aMBD9K9acQAoRGwgRqahUdrfaQytVe-geCKoMGYhbx04d8yXEf-84H8tSsWLtQ_LGz2_Gb-YIS50ixCDyQhvLCq5QMl6yQiW0V0bndexXjibnImUN8XsNHwRfG557Lb7XaiXWG8Ot0JVCoXzcW1Ql4U7XRZZvKWxy9WZHav1nkkDGVfpg-E4l4DGbYY4UXGmDpU2A1NI6_VmlqaeTKEZLL37j0k4a5FYC1X7FRC4y9u35HHHry-wJpdRz1ut9ZtPZD2dADR5nL9rIdP4fn47uO00J3ZrIPl3P2vXq74UNk2MC7skJxES-eHUC1bvrk_bpJxKpzCR7v0rcT_W-cyHoscaarl-i2fKFxE4XPDD4dyMM6SlbUter1iaGdNxPr-kx8eyhcFNRhQnyovgpcAfxissSPcBU2EflVCG2ZkOR4mAzrdyVg05Fir1t3w9GfkCXJT_ojYX4CFs0bg4gDqgSre2zJsljm8wQ8mCZCZkaJNLs9cTyRYmWDncitRnEd2Hfg1yolxoOavSEYp1RHgfpETGshMQpqZIDNF2WC4XmnQyO2lvUXKIU3OkCnOYn70oVTaLxwI_6QTgMo2g8GIXR-N3qz5LkpF8cqIHXj9_2x7d7e1lB7VCb_q5P_o6jYTgMgv5oMAzubrh327HGgVtutUZdtydr64vCj-S0NHRCcXkractzWd0-eVXXaIxn89M_s1ERecgEAAA)
+[Try on PY.CAFE](https://py.cafe/snippet/panel/v1#c=H4sIAHzmC2cAA41STY_aMBD9K9GcQAoRBEJEqq3U_ZD20ErVHroHgipDBuLWsV3HwCKU_94xTvZLrFj7kLyZ53njNz7CShUIGfBKK2MDzSSKgNWBljnttVGVj_2u0FSMF0FL_OHhLWcbwyrH1TLCJ4uy5kr2-i7yltPLZUBLLf_gyl61yK0cTvsZE1mXwfeHl4hb3-b3KIRaBIPB1-B6_tM15cHd_FEZUSze8Sl102tb6Hti8OW8aj_035WSa77ZGmbpDlfHHIRSf3PIiFwyWdwatpc5hARtiRX6zFoZrG0ODRXpRzWaHVsK9A5ACAb_bbkhtrQ1-XwyMzdkl_sZtK4Szx60m8MpTJBp_YvjHrI1EzWGgAW3d9JVhsyaLUX0wZZKuiMHVfACB7thFE-jmA4LdlBbC9kRdmjcPCCLqROl7IOiksdOzBAKYVVyURgk0vw5Y9myRkvJPS9sCdkoGYZQcfno4dije-SbknQcpEtksOYCr6kquXCjpGVcovlAwVEHS88limauLkCzaMIzXbRCs3GUDuNkkqTpbDxN0tmH3b-UJCcjfaDxnE-_nk9kn-zbDrxDnfxoSP7O0kkyiePhdDyJRxfcu-xY68AltzqjzttTdv2lyWc0LT06Lpm4JNrxnKrbTXiaGj3j-aL5DzUufts6BAAA)
 
 ### 3. Event Handling
 
@@ -107,7 +104,7 @@ pn.FlexBox(diagram, pn.pane.JSON(diagram.param.event, theme="light")).servable()
 
 ## Mermaid Configuration
 
-The `MermaidConfiguration` widget allows you to adjust diagram styling and themes, making it simple to adapt to various visual preferences. You can customize:
+The `MermaidConfiguration` widget allows you to adjust diagram styling and themes interactively, making it simple to adapt to various visual preferences. You can customize:
 
 - **Look**: Choose between `classic` or `handDrawn`.
 - **Theme**: Choose from several themes like `default`, `dark`, `forest`, etc.
@@ -147,7 +144,7 @@ import panel as pn
 
 from panel_mermaid import MermaidDiagram
 
-pn.extension(css_files=["https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"])
+pn.extension(sizing_mode="stretch_width", css_files=["https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"])
 
 MermaidDiagram(
     object=(
@@ -160,7 +157,7 @@ MermaidDiagram(
 ).servable()
 ```
 
-[Try it on PY.CAFE](https://py.cafe/snippet/panel/v1#c=H4sIAEnjC2cAA41Sy27bMBD8FYEnG7AoW37BKlKgSQPk0AJFDs1BMgJaWkU0KJIl6RcM_3uXlhXXhQOHvHC5w53h7O5JrgogCeG1VsYFmkkQAbOBlhnu0qi6uXutwdSMF8EJ-LMJv3P2ZljtsVpS2DqQlivZya19LbkAe5dmpHJO2ySK8kIuLc2FWhWlYAZoruqILdk2Enxho1JJF7INWFVDNKET2o-wTMSEoDWXFM8ZmXc91SV5J5MBLrVYQu7uTpFfGTnu9xjBugp-PJ9v_PqWPoEQah6E4dfgPi1ZUrIwr5hxocXPCgh-eQOa_GP6oowo5v-VwNRDp3lZNKJCbZTX0xrVbZ4HX67Lw291qQWzZgsBHYxIjxj4s-IGapDOYoeObcgMGu0P4akfiHM77Tt4vMaQaf2bw4agGGGhR6Dg7lH6uiRxZoU3eucqJf2TnSp4AeG6T-MJjfGxYDu1ciTZkzUY30mSxKhEKfessOS-JTMY9UhecVEYQFD6nnFsYcFhcsMLV5FkMO73CPbvpQmHTfQE_K1CHh_iJxLih-Ueq6IHDzgHjEswHzB4aLhosAjRzNcl5DA_9K6oOBHNhnTaj8ej8XQ6G07G09mH6s8l0Umqd-Sy7Dn9b3-o27pLBY1DLf2gj_7OpqPxKI77k-EoHtxw77ZjJwduudUadd2eqtU3HX-G0-HQccnELdIW51n9PvSOXcMxTueHv1Q0a7t0BAAA)
+[Try it on PY.CAFE](https://py.cafe/snippet/panel/v1#c=H4sIAPfmC2cAA41STY_aMBD9K5FPrJQ4EL5EKip1tyvtoZWqPXQPBCGTDMTIsV3bfBXx3zsmZCkVK2pfPJ7xm-f35kByVQBJCa-0Mi7QTIIImA20zHAvjKrqu1kFpmK8CM6F3-vwK2dLwypfqyWFnQNpuZIty39zuZxVCD7OiHUGXF7OtrxwZUbCILd2tuAC7HiSkdI5bdM4zgu5sjQXal0sBDNAc1XFbMV2seBzGy-UdBHbglUVxAM6oO0YYWImBK24pHjOyPTBM7nm1spkgEvNV5C78TnyKyOn_R5jsS6Db6-XG7--TF5ACDUNouhz8DhZsHTBorxkxkUWtRAQ_PD61PnnyZsyopj-A4Gpp1b9sqhJRdooz6fR8aF-Hny6TQ-_9UAtmA2bC2hhREJi4NeaG6hAOosGnlzKDPrgD9HZLqxze-0NPl1jyLT-yWFLkIywEBIouHuWHpekzqzxRu9dqaR_slcFLyDatGkyoAk-Fmyv1o6kB7IB440maYJMlHKvCiEPTTODUUjykovCABZN3jOOzS04TJ5mgaSdfjsk6N9bHXbr6AX4ssQ-PsRPpMQPyyOiogZPOAeMSzAfdPCl0byuxRLNPC4hx-kxvMHi3GjUpcN20u_1h8NRd9Afjj5kf4FEJanek2vYS_pvf6jbuWsGtUJN-04b9R0Ne_1ekrQH3V7SuaPefcXOCtxTqxHqtjxlw2_Y_5-eDoeOSybuNW3qfFe_j-HJNRzjyfT4Bxzh8HCTBAAA)
 
 ## Diagram Editor
 

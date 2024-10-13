@@ -1,6 +1,6 @@
 [project]
 name = "panel-mermaid"
-version = "0.1.0"
+version = "0.1.2"
 description = "A project providing a Mermaid JS widget for use with HoloViz Panel."
 readme = "README.md"
 requires-python = ">=3.11"
