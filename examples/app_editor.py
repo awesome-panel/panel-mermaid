@@ -1,4 +1,5 @@
 import textwrap
+from io import StringIO
 
 import panel as pn
 from config import (
@@ -21,7 +22,7 @@ pn.extension(
 )
 
 # Component Definitions
-config = MermaidConfiguration()
+initialization = MermaidConfiguration(name="Initialization")
 example = ExamplePicker(value="Default", options=EXAMPLES)
 code = pn.widgets.CodeEditor(
     value=example.value,
@@ -31,7 +32,8 @@ code = pn.widgets.CodeEditor(
 )
 diagram = MermaidDiagram(
     object=code.value,
-    configuration=config,
+    update_value=True,
+    configuration=initialization,
     event_configuration=[("click", ".node")],
     margin=10,
 )
@@ -43,22 +45,26 @@ run = pn.widgets.Button(
     description="Click Run to update the diagram",
     margin=(10, 10, 10, 20),
 )
-event_label = pn.pane.Markdown("### Mermaid Events", margin=(0, 5, 0, 5))
+value_download = pn.widgets.FileDownload(
+    file=pn.bind(StringIO, diagram.param.value),
+    filename="diagram.svg",
+    button_type="primary",
+    button_style="outline",
+)
 event = pn.pane.JSON(
     object=diagram.param.event, name="Config Dict", theme=get_json_theme()
 )
 events = pn.Column(
-    event_label,
     diagram.param.event_configuration,
     event,
+    name="Events",
 )
 
 docs_modal = Modal()
 docs_section = pn.Column(
-    pn.pane.Markdown("### Mermaid Documentation", margin=(0, 5, 0, 5)),
     pn.widgets.Button.from_param(
         docs_modal.param.open,
-        name="Show",
+        name="Show Documentation",
         button_type="primary",
         button_style="outline",
         description="Click here to show the MermaidDiagram documentation",
@@ -83,7 +89,9 @@ def _update_code(value):
 def docs_content(event=None):
     return pn.Column(
         pn.pane.Markdown(
-            textwrap.dedent(diagram.__doc__) + "\n" + diagram.param._repr_html_(),
+            textwrap.dedent(diagram.__doc__)
+            + "\n### Parameters\n\n"
+            + diagram.param._repr_html_(),
         ),
         height=500,
         scroll=True,
@@ -93,11 +101,22 @@ def docs_content(event=None):
 # Layout Setup
 docs_modal[:] = [docs_content]
 
+value_section = pn.Column(
+    pn.widgets.TextAreaInput.from_param(diagram.param.value, disabled=True, height=100),
+    diagram.param.update_value,
+    value_download,
+    name="Value",
+)
+
 sidebar = [
     example,
-    config,
-    events,
     docs_section,
+    pn.Accordion(
+        initialization,
+        events,
+        value_section,
+        margin=(10, 15, 10, 5),
+    ),
 ]
 
 main_content = pn.Column(
@@ -116,7 +135,7 @@ main_content = pn.Column(
 
 # Template Setup
 pn.template.FastListTemplate(
-    title="Panel Mermaid | Editor",
+    title="Panel Mermaid | Diagram Editor",
     logo=LOGO,
     sidebar=sidebar,
     main=[main_content],
