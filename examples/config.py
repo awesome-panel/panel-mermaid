@@ -3,12 +3,12 @@ import panel as pn
 LOGO = "https://avatars.githubusercontent.com/u/57169982?s=200&v=4"
 ACCENT = "#db2777"
 MERMAID_JS_URL = "https://mermaid.js.org/"
+PANEL_MERMAID_URL = "https://github.com/awesome-panel/panel-mermaid"
 EXAMPLES = {
     "Default": """\
 graph LR
-    A --- B
-    B-->C[fa:fa-ban forbidden]
-    B-->D(fa:fa-spinner);
+    A[Hello] --> B[fa:fa-chart-simple Panel] --> E[World]
+    A-->C(fa:fa-diagram-project Mermaid) --> E ;
 """,
     "Architecture": """\
 architecture-beta

@@ -6,7 +6,6 @@ from config import (
     BOOTSTRAP_CSS_URL,
     EXAMPLES,
     LOGO,
-    MERMAID_JS_URL,
     get_code_editor_theme,
     get_json_theme,
 )
@@ -62,7 +61,7 @@ docs_section = pn.Column(
         name="Show",
         button_type="primary",
         button_style="outline",
-        description="Click here to show the Mermaid Parameter documentation",
+        description="Click here to show the MermaidDiagram documentation",
     ),
     docs_modal,
 )
@@ -117,9 +116,8 @@ main_content = pn.Column(
 
 # Template Setup
 pn.template.FastListTemplate(
-    site="Panel-Mermaid",
+    title="Panel Mermaid | Editor",
     logo=LOGO,
-    site_url=MERMAID_JS_URL,
     sidebar=sidebar,
     main=[main_content],
     main_layout=None,

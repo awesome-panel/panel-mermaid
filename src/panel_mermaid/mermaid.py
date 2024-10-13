@@ -1,4 +1,3 @@
-import textwrap
 
 import panel as pn
 import param
