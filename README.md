@@ -50,7 +50,7 @@ MermaidDiagram(
 
 [Try on PY.CAFE](https://py.cafe/snippet/panel/v1#c=H4sIAGrhC2cAA41STU_DMAz9K5FPm9RWMARIRSDxJXEACXGAQzehbPVoUJqE1BtU0_47ztoxBpu25NJnP_vZr5nByOYIKajSWU_CSYNayEo40-c79rZsYq8l-lKqXLTEhwbeKPnmZRm4ziT4RWgqZU2nGyLrnE7fCD52-I4jOm9ROH1Y3B_MZFeI-6dVJJzL7A61tgMRxxfiKnsMQzXgNnuxXueDP3xOXXfaEboNUZxtVuVpu0mFfiqHGsPsEIHHj4nyWKKhiv1ZmND3vGb4iFs3mEe1C_4twgylc88KPyEdS11hBJgrujWhL6TkJxxxNRXWhJLa5irHeHqQ9E6SHhdrWdsJQTqDKfrgI6Q9nsRaerLccrYU84wiGBVK5x6ZlP1kSA4rJE5-qpwKSA-PDyIolXlp4FGD7lC9FawTIC-RwlhpvOKu7MG1NSSVQb9FIVDjYcNlipOhL8B8MI_-T7FlxFUd25W4GtZrV-nfPyGhL1qX2cOG3au3q-xae7nx5j2Ltuvh6fE-msSvRxmpd4kueUE13Hm0sJ_fYzaYfwOdqMshuwMAAA)
 
-### 2. Customizing the Configuration
+### 2. Basic Mermaid Configuration
 
 Use the `configuration` parameter to modify the [Mermaid diagram configuration](https://mermaid.js.org/schemas/config.schema.json):
 
@@ -75,7 +75,7 @@ MermaidDiagram(
 
 [Try on PY.CAFE](https://py.cafe/snippet/panel/v1#c=H4sIAHzmC2cAA41STY_aMBD9K9GcQAoRBEJEqq3U_ZD20ErVHroHgipDBuLWsV3HwCKU_94xTvZLrFj7kLyZ53njNz7CShUIGfBKK2MDzSSKgNWBljnttVGVj_2u0FSMF0FL_OHhLWcbwyrH1TLCJ4uy5kr2-i7yltPLZUBLLf_gyl61yK0cTvsZE1mXwfeHl4hb3-b3KIRaBIPB1-B6_tM15cHd_FEZUSze8Sl102tb6Hti8OW8aj_035WSa77ZGmbpDlfHHIRSf3PIiFwyWdwatpc5hARtiRX6zFoZrG0ODRXpRzWaHVsK9A5ACAb_bbkhtrQ1-XwyMzdkl_sZtK4Szx60m8MpTJBp_YvjHrI1EzWGgAW3d9JVhsyaLUX0wZZKuiMHVfACB7thFE-jmA4LdlBbC9kRdmjcPCCLqROl7IOiksdOzBAKYVVyURgk0vw5Y9myRkvJPS9sCdkoGYZQcfno4dije-SbknQcpEtksOYCr6kquXCjpGVcovlAwVEHS88limauLkCzaMIzXbRCs3GUDuNkkqTpbDxN0tmH3b-UJCcjfaDxnE-_nk9kn-zbDrxDnfxoSP7O0kkyiePhdDyJRxfcu-xY68AltzqjzttTdv2lyWc0LT06Lpm4JNrxnKrbTXiaGj3j-aL5DzUufts6BAAA)
 
-## 3. Mermaid Configuration
+## 3. The MermaidConfiguration Widget
 
 The `MermaidConfiguration` widget allows you to adjust diagram styling and themes interactively, making it simple to adapt to various visual preferences. You can customize:
 
