@@ -31,12 +31,21 @@ function addEventListeners(svgElement, eventConfig, model) {
         });
     });
 }
+async function update_value(model){
+    if (model.update_value){
+        const svg = await generateMermaidSVG(model.object);
+        model.value = svg;
+    } else {
+        model.value="";
+    }
+}
 
 // Updates the Mermaid object (diagram) and renders it into the element
 async function updateDiagram(el, model) {
     if (!model.object) return;
     const svg = await generateMermaidSVG(model.object);
     el.innerHTML = svg;
+    if (model.update_value){model.value = svg;}
     const svgElement = el.firstChild;
     addEventListeners(svgElement, model.event_configuration, model);
 }
@@ -54,4 +63,5 @@ export async function render({ model, el }) {
         updateDiagram(el, model);
     });
     model.on('event_configuration', () => updateDiagram(el, model));
+    model.on('update_value', () => update_value(model));
 }

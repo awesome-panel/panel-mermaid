@@ -52,7 +52,7 @@ MermaidDiagram(
 
 ### 2. Customizing the Configuration
 
-Use the `MermaidConfiguration` widget to interactively modify the Mermaid diagram configuration. Here's an example of how to integrate it:
+Use the `configuration` parameter to modify the [Mermaid diagram configuration](https://mermaid.js.org/schemas/config.schema.json):
 
 ```python
 import panel as pn
@@ -102,7 +102,45 @@ pn.FlexBox(diagram, pn.pane.JSON(diagram.param.event, theme="light")).servable()
 
 [Try it on PY.CAFE](https://py.cafe/snippet/panel/v1#c=H4sIAOHiC2cAA41SbW_aMBD-K9F9AilENBAiMjFpdJ2qaW_qpPVDgiqTHMSbY2eOoSDEf985L6WtqJgtQZ7z43vunvMBUpUhRMCLUmnjlEyicFjllDKhvdKqaGIPBeqC8cxpiV8b-JGztWaF2-FrJVd8vdHMcFVnKKWHO4OyItzr20jWXHFmr3L0EunQUsvfmJpZi-xKoN5PmMhl7ny5O0Xs-hDfohBq4QwG7515_MMW3YCb-F5pkS1e8enouteW0G-Izrvzqn23-cctSvOQPu9xFvcSSAVP_yTg0iVPkp8J9Emt7pb6_yRwN1e7Xtu4S9561lPv88_v37ooRexvreA6JscCZwkIvs4NZet7FeotWwq0HoILGv9uuCaSNBVNrx5RoknOfgzaWRHP7Es73TpMkJXlL46PEK2YqNAFzLi5kTYvREZvKFLuTa6kvbJXGc9wsB16_sTz6bJge7UxEB1gi9rOEyKfKlHK3ClKeejENCEX0pyLTCOR4qcTw5YVGjp85JnJIboKhi4UXN43cNSgW7RdN5CaiGDFBc4pK3lA78swLlG_oWCpg2XDJUrJbF6A4-LonqmiFZqOvHDoB-MgDKejSRBO36z-lJKc9Mo9vEx7On4-H8_szMsKGoc6-ash-TsNx8HY94eT0di_uuDeZcdaBy651Rl13p68qy8M_kfT0KPjkolLoh3Pqtp9dOup0TOOF8d_ekI_p5AEAAA)
 
-## Mermaid Configuration
+## 4. Mermaid SVG Value
+
+If you would like the Mermaid SVG `value` to be updated would will need to set `update_value=True`:
+
+```python
+from io import StringIO
+import panel as pn
+from panel_mermaid import MermaidDiagram
+
+pn.extension()
+
+diagram = MermaidDiagram(
+    object=(
+        """
+        graph LR
+            A[Hello] --> B[Panel] --> E[World]
+            A-->C(Mermaid) --> E ;
+        """
+    ),
+    update_value=True,
+)
+
+pn.FlexBox(
+    pn.Column(
+        diagram,
+        diagram.param.update_value,
+    ),
+    pn.Column(
+        pn.widgets.TextAreaInput(value=diagram.param.value, disabled=True, height=200),
+        pn.widgets.FileDownload(
+            file=pn.bind(StringIO, diagram.param.value), filename="diagram.svg"
+        ),
+    ),
+).servable()
+```
+
+[Try on PY.CAFE]()
+
+## 5. Mermaid Configuration
 
 The `MermaidConfiguration` widget allows you to adjust diagram styling and themes interactively, making it simple to adapt to various visual preferences. You can customize:
 
@@ -179,6 +217,7 @@ This project is licensed under the MIT License.
 - [PyMermaid](https://github.com/QuattroMusic/PyMermaid)
 - [pymermaider](https://github.com/diceroll123/pymermaider)
 - [python-mermaid](https://github.com/Dynnammo/python_mermaid)
+- [streamlit-mermaid](https://github.com/neka-nat/streamlit-mermaid)
 
 ---
 

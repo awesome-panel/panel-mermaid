@@ -1,4 +1,3 @@
-
 import panel as pn
 import param
 from panel.custom import JSComponent
@@ -70,11 +69,6 @@ class MermaidConfiguration(pn.viewable.Viewer, WidgetBase):
 
     def __panel__(self):
         return pn.Column(
-            pn.pane.Markdown(
-                """### Mermaid Configuration
-            """,
-                margin=(0, 5, 0, 5),
-            ),
             self.param.look,
             self.param.theme,
         )
@@ -114,7 +108,7 @@ class MermaidDiagram(JSComponent):
     ```
     '''
 
-    object = param.String(
+    object: str = param.String(
         default="",
         allow_refs=True,
         doc="""A mermaid diagram string like
@@ -123,7 +117,16 @@ class MermaidDiagram(JSComponent):
                 B-->C[forbidden]
                 B-->D[allowed];""",
     )
-    configuration = param.Dict(
+    value: str = param.String(
+        doc="""The SVG Value corresponding to the object.
+        Will only be updated if update_value is True."""
+    )
+    update_value: bool = param.Boolean(
+        default=False,
+        doc="If True the value will be updated. Default is False to save resources.",
+        label="Update Value",
+    )
+    configuration: dict = param.Dict(
         {},
         allow_refs=True,
         doc="""The mermaid configuration as described in https://mermaid.js.org/schemas/config.schema.json.""",
