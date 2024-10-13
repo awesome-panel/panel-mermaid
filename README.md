@@ -6,7 +6,7 @@
 
 This package provides a seamless interface for creating and customizing Mermaid diagrams directly in Python, with the ability to edit configurations and styles interactively. Works in Jupyter notebooks and in your Panel data app.
 
-[![panel-mermaid](static/panel-mermaid-bootstrap.png)](https://py.cafe/awesome.panel.org/panel-mermaid-diagrams)
+[![panel-mermaid](https://github.com/awesome-panel/panel-mermaid/blob/main/static/panel-mermaid-bootstrap.png?raw=true)](https://py.cafe/awesome.panel.org/panel-mermaid-diagrams)
 
 ### Key Features
 
@@ -164,16 +164,13 @@ MermaidDiagram(
 
 ## Diagram Editor
 
-Check out the live Diagram Editor:
+Check out the live Diagram Editor [Code](https://py.cafe/awesome.panel.org/panel-mermaid-diagram-editor) or [App](https://py.cafe/app/awesome.panel.org/panel-mermaid-diagram-editor).
 
-- [Code](https://py.cafe/awesome.panel.org/panel-mermaid-diagram-editor)
-- [App](https://py.cafe/app/awesome.panel.org/panel-mermaid-diagram-editor)
-
-[![Panel Mermaid | Diagram Editor](static/panel-mermaid-editor.gif)](https://py.cafe/awesome.panel.org/panel-mermaid-diagram-editor)
+[![Panel Mermaid | Diagram Editor](https://github.com/awesome-panel/panel-mermaid/blob/main/static/panel-mermaid-editor.gif?raw=true)](https://py.cafe/awesome.panel.org/panel-mermaid-diagram-editor)
 
 ## Contributions
 
-We welcome contributions to this project! Please feel free to submit issues or pull requests to the [GitHub repository](https://github.com/awesome-panel/panel-mermaid). Check out the [DEVELOPER_GUIDE](DEVELOPER_GUIDE.MD) for more info.
+We welcome contributions to this project! Please feel free to submit issues or pull requests to the [GitHub repository](https://github.com/awesome-panel/panel-mermaid). Check out the [DEVELOPER_GUIDE](DEVELOPER_GUIDE.md) for more info.
 
 ## License
 
